@@ -1,0 +1,8 @@
+# one:
+#   record: name_of_fixture (ClassOfFixture)
+#   name: content
+#   body: <p>In a <i>million</i> stars!</p>
+activity_one:
+  record: one (Activity)
+  name: description
+  body: <div class="trix-content">My <i>favourite</i> description!</div>
