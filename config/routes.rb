@@ -3,14 +3,13 @@
 #                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
 #                                                 /assets                                                                                           Propshaft::Server
 #                       rails_health_check GET    /up(.:format)                                                                                     rails/health#show
-#                                     tags GET    /tags(.:format)                                                                                   tags#index
-#                                          POST   /tags(.:format)                                                                                   tags#create
-#                                  new_tag GET    /tags/new(.:format)                                                                               tags#new
-#                                 edit_tag GET    /tags/:id/edit(.:format)                                                                          tags#edit
-#                                      tag GET    /tags/:id(.:format)                                                                               tags#show
-#                                          PATCH  /tags/:id(.:format)                                                                               tags#update
-#                                          PUT    /tags/:id(.:format)                                                                               tags#update
-#                                          DELETE /tags/:id(.:format)                                                                               tags#destroy
+#                              new_session GET    /session/new(.:format)                                                                            sessions#new
+#                             edit_session GET    /session/edit(.:format)                                                                           sessions#edit
+#                                  session GET    /session(.:format)                                                                                sessions#show
+#                                          PATCH  /session(.:format)                                                                                sessions#update
+#                                          PUT    /session(.:format)                                                                                sessions#update
+#                                          DELETE /session(.:format)                                                                                sessions#destroy
+#                                          POST   /session(.:format)                                                                                sessions#create
 #                               activities GET    /activities(.:format)                                                                             activities#index
 #                                          POST   /activities(.:format)                                                                             activities#create
 #                             new_activity GET    /activities/new(.:format)                                                                         activities#new
@@ -19,6 +18,14 @@
 #                                          PATCH  /activities/:id(.:format)                                                                         activities#update
 #                                          PUT    /activities/:id(.:format)                                                                         activities#update
 #                                          DELETE /activities/:id(.:format)                                                                         activities#destroy
+#                                     tags GET    /tags(.:format)                                                                                   tags#index
+#                                          POST   /tags(.:format)                                                                                   tags#create
+#                                  new_tag GET    /tags/new(.:format)                                                                               tags#new
+#                                 edit_tag GET    /tags/:id/edit(.:format)                                                                          tags#edit
+#                                      tag GET    /tags/:id(.:format)                                                                               tags#show
+#                                          PATCH  /tags/:id(.:format)                                                                               tags#update
+#                                          PUT    /tags/:id(.:format)                                                                               tags#update
+#                                          DELETE /tags/:id(.:format)                                                                               tags#destroy
 #         turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
 #         turbo_resume_historical_location GET    /resume_historical_location(.:format)                                                             turbo/native/navigation#resume
 #        turbo_refresh_historical_location GET    /refresh_historical_location(.:format)                                                            turbo/native/navigation#refresh
@@ -51,8 +58,10 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :tags
+  resource :session
+
   resources :activities
+  resources :tags
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
