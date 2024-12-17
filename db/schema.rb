@@ -50,7 +50,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_041446) do
   end
 
   create_table "activities", force: :cascade do |t|
-    t.date "done_on"
+    t.date "drawn_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

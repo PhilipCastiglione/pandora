@@ -16,7 +16,7 @@ class ActivitiesTest < ApplicationSystemTestCase
     visit activities_url
     click_on "New activity"
 
-    fill_in "Done on", with: @activity.done_on
+    fill_in "Drawn on", with: @activity.drawn_on
     click_on "Create Activity"
 
     assert_text "Activity was successfully created"
@@ -28,7 +28,7 @@ class ActivitiesTest < ApplicationSystemTestCase
     visit activity_url(@activity)
     click_on "Edit this activity", match: :first
 
-    fill_in "Done on", with: @activity.done_on.to_s
+    fill_in "Drawn on", with: @activity.drawn_on.to_s
     click_on "Update Activity"
 
     assert_text "Activity was successfully updated"

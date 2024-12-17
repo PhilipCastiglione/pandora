@@ -3,7 +3,7 @@
 # Table name: activities
 #
 #  id         :integer          not null, primary key
-#  done_on    :date
+#  drawn_on   :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -13,6 +13,6 @@ class Activity < ApplicationRecord
   has_and_belongs_to_many :tags
 
   def draw!
-    update(done_on: Date.current)
+    update(drawn_on: Date.current)
   end
 end

@@ -5,12 +5,12 @@ class TagsController < ApplicationController
 
   # GET /
   def home
-    @tags = Tag.includes(:activities).where(activities: { done_on: nil })
+    @tags = Tag.includes(:activities).where(activities: { drawn_on: nil })
   end
 
   # GET /tags/1/activities
   def activities
-    @tag = Tag.includes(:activities).where(activities: { done_on: nil }).find(params.expect(:id))
+    @tag = Tag.includes(:activities).where(activities: { drawn_on: nil }).find(params.expect(:id))
 
     if @tag.activities.empty?
       redirect_to root_path, alert: "No available activities found for tag."

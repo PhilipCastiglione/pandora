@@ -5,14 +5,14 @@
 # Table name: activities
 #
 #  id         :integer          not null, primary key
-#  done_on    :date
+#  drawn_on   :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 one:
-  done_on: nil
+  drawn_on: nil
   tags: one
 
 two:
-  done_on: 2024-12-17 11:17:36
+  drawn_on: 2024-12-17 11:17:36
   tags: one, two

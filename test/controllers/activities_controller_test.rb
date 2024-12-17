@@ -55,7 +55,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should not create activity when not authenticated" do
     assert_no_difference("Activity.count") do
-      post activities_url, params: { activity: { done_on: @activity.done_on } }
+      post activities_url, params: { activity: { drawn_on: @activity.drawn_on } }
     end
 
     assert_redirected_to new_session_url
@@ -65,7 +65,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     sign_in(users(:one))
 
     assert_difference("Activity.count") do
-      post activities_url, params: { activity: { done_on: @activity.done_on } }
+      post activities_url, params: { activity: { drawn_on: @activity.drawn_on } }
     end
 
     assert_redirected_to activity_url(Activity.last)
@@ -96,14 +96,14 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update activity when not authenticated" do
-    patch activity_url(@activity), params: { activity: { done_on: @activity.done_on } }
+    patch activity_url(@activity), params: { activity: { drawn_on: @activity.drawn_on } }
     assert_redirected_to new_session_url
   end
 
   test "should update activity when authenticated" do
     sign_in(users(:one))
 
-    patch activity_url(@activity), params: { activity: { done_on: @activity.done_on } }
+    patch activity_url(@activity), params: { activity: { drawn_on: @activity.drawn_on } }
     assert_redirected_to activity_url(@activity)
   end
 
