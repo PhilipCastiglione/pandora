@@ -5,6 +5,21 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
     @tag = tags(:one)
   end
 
+  test "should get home" do
+    get root_url
+    assert_response :success
+  end
+
+  test "should get activities when a tag has activities" do
+    get tag_activities_url(tags(:one))
+    assert_response :success
+  end
+
+  test "should not get activities when a tag has no activities" do
+    get tag_activities_url(tags(:three))
+    assert_redirected_to root_url
+  end
+
   test "should not get index when not authenticated" do
     get tags_url
     assert_redirected_to new_session_url

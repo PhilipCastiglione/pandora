@@ -5,6 +5,30 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     @activity = activities(:one)
   end
 
+  test "should not get draw when not authenticated" do
+    post draw_activity_url(@activity)
+    assert_redirected_to new_session_url
+  end
+
+  test "should get draw when authenticated" do
+    sign_in(users(:one))
+
+    post draw_activity_url(@activity)
+    assert_redirected_to drawn_activity_url(@activity)
+  end
+
+  test "should not get drawn when not authenticated" do
+    get drawn_activity_url(@activity)
+    assert_redirected_to new_session_url
+  end
+
+  test "should get drawn when authenticated" do
+    sign_in(users(:one))
+
+    get drawn_activity_url(@activity)
+    assert_response :success
+  end
+
   test "should not get index when not authenticated" do
     get activities_url
     assert_redirected_to new_session_url

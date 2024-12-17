@@ -1,5 +1,21 @@
 class TagsController < ApplicationController
+  allow_unauthenticated_access only: %i[ home activities ]
+
   before_action :set_tag, only: %i[ show edit update destroy ]
+
+  # GET /
+  def home
+    @tags = Tag.includes(:activities).where(activities: { done_on: nil })
+  end
+
+  # GET /tags/1/activities
+  def activities
+    @tag = Tag.includes(:activities).where(activities: { done_on: nil }).find(params.expect(:id))
+
+    if @tag.activities.empty?
+      redirect_to root_path, alert: "No available activities found for tag."
+    end
+  end
 
   # GET /tags or /tags.json
   def index

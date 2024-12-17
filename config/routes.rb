@@ -18,6 +18,8 @@
 #                                          PATCH  /activities/:id(.:format)                                                                         activities#update
 #                                          PUT    /activities/:id(.:format)                                                                         activities#update
 #                                          DELETE /activities/:id(.:format)                                                                         activities#destroy
+#                            draw_activity POST   /activities/:id/draw(.:format)                                                                    activities#draw
+#                           drawn_activity GET    /activities/:id/drawn(.:format)                                                                   activities#drawn
 #                                     tags GET    /tags(.:format)                                                                                   tags#index
 #                                          POST   /tags(.:format)                                                                                   tags#create
 #                                  new_tag GET    /tags/new(.:format)                                                                               tags#new
@@ -26,6 +28,8 @@
 #                                          PATCH  /tags/:id(.:format)                                                                               tags#update
 #                                          PUT    /tags/:id(.:format)                                                                               tags#update
 #                                          DELETE /tags/:id(.:format)                                                                               tags#destroy
+#                           tag_activities GET    /tags/:id/activities(.:format)                                                                    tags#activities
+#                                     root GET    /                                                                                                 tags#home
 #         turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
 #         turbo_resume_historical_location GET    /resume_historical_location(.:format)                                                             turbo/native/navigation#resume
 #        turbo_refresh_historical_location GET    /refresh_historical_location(.:format)                                                            turbo/native/navigation#refresh
@@ -61,12 +65,16 @@ Rails.application.routes.draw do
   resource :session
 
   resources :activities
+  post "activities/:id/draw" => "activities#draw", as: :draw_activity
+  get "activities/:id/drawn" => "activities#drawn", as: :drawn_activity
+
   resources :tags
+  get "tags/:id/activities" => "tags#activities", as: :tag_activities
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "tags#home"
 end

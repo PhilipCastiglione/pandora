@@ -1,5 +1,18 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: %i[ show edit update destroy ]
+  before_action :set_activity, only: %i[ show edit update destroy draw drawn ]
+
+  # POST /activities/1/draw
+  def draw
+    if @activity.draw!
+      redirect_to drawn_activity_path(@activity)
+    else
+      redirect_to root_path, alert: "Activity could not be drawn."
+    end
+  end
+
+  # GET /activities/1/drawn
+  def drawn
+  end
 
   # GET /activities or /activities.json
   def index
