@@ -18,6 +18,10 @@
     <%= form.rich_textarea :description %>
   </div>
   <div>
+    <%= form.label :tag_ids, style: "display: block" %>
+    <%= form.collection_checkboxes :tag_ids, Tag.order(:label), :id, :label %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

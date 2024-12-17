@@ -7,4 +7,8 @@
     <strong>Description:</strong>
     <%= activity.description %>
   </p>
+  <p>
+    <strong>Tags:</strong>
+    <%= activity.tags.map(&:label).join(", ") %>
+  </p>
 </div>

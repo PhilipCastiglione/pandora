@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities or /activities.json
   def index
-    @activities = Activity.all
+    @activities = Activity.includes(:tags).all
   end
 
   # GET /activities/1 or /activities/1.json
@@ -60,11 +60,11 @@ class ActivitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
-      @activity = Activity.find(params.expect(:id))
+      @activity = Activity.includes(:tags).find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
     def activity_params
-      params.expect(activity: [ :done_on, :description ])
+      params.expect(activity: [ :done_on, :description, tag_ids: [] ])
     end
 end

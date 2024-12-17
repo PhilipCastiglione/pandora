@@ -10,7 +10,9 @@
 #  updated_at :datetime         not null
 #
 one:
-  done_on: 2024-12-17 11:17:36
+  done_on: nil
+  tags: one
 
 two:
   done_on: 2024-12-17 11:17:36
+  tags: one, two

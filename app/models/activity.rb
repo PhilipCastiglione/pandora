@@ -9,4 +9,6 @@
 #
 class Activity < ApplicationRecord
   has_rich_text :description
+
+  has_and_belongs_to_many :tags
 end

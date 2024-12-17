@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 one:
-  label: MyString
+  label: Good Tag
 
 two:
-  label: MyString
+  label: Bad Tag
