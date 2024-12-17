@@ -5,17 +5,41 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     @activity = activities(:one)
   end
 
-  test "should get index" do
+  test "should not get index when not authenticated" do
+    get activities_url
+    assert_redirected_to new_session_url
+  end
+
+  test "should get index when authenticated" do
+    sign_in(users(:one))
+
     get activities_url
     assert_response :success
   end
 
-  test "should get new" do
+  test "should not get new when not authenticated" do
+    get new_activity_url
+    assert_redirected_to new_session_url
+  end
+
+  test "should get new when authenticated" do
+    sign_in(users(:one))
+
     get new_activity_url
     assert_response :success
   end
 
-  test "should create activity" do
+  test "should not create activity when not authenticated" do
+    assert_no_difference("Activity.count") do
+      post activities_url, params: { activity: { done_on: @activity.done_on } }
+    end
+
+    assert_redirected_to new_session_url
+  end
+
+  test "should create activity when authenticated" do
+    sign_in(users(:one))
+
     assert_difference("Activity.count") do
       post activities_url, params: { activity: { done_on: @activity.done_on } }
     end
@@ -23,22 +47,53 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to activity_url(Activity.last)
   end
 
-  test "should show activity" do
+  test "should not show activity when not authenticated" do
+    get activity_url(@activity)
+    assert_redirected_to new_session_url
+  end
+
+  test "should show activity when authenticated" do
+    sign_in(users(:one))
+
     get activity_url(@activity)
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should not get edit when not authenticated" do
+    get edit_activity_url(@activity)
+    assert_redirected_to new_session_url
+  end
+
+  test "should get edit when authenticated" do
+    sign_in(users(:one))
+
     get edit_activity_url(@activity)
     assert_response :success
   end
 
-  test "should update activity" do
+  test "should not update activity when not authenticated" do
+    patch activity_url(@activity), params: { activity: { done_on: @activity.done_on } }
+    assert_redirected_to new_session_url
+  end
+
+  test "should update activity when authenticated" do
+    sign_in(users(:one))
+
     patch activity_url(@activity), params: { activity: { done_on: @activity.done_on } }
     assert_redirected_to activity_url(@activity)
   end
 
-  test "should destroy activity" do
+  test "should not destroy activity when not authenticated" do
+    assert_no_difference("Activity.count") do
+      delete activity_url(@activity)
+    end
+
+    assert_redirected_to new_session_url
+  end
+
+  test "should destroy activity when authenticated" do
+    sign_in(users(:one))
+
     assert_difference("Activity.count", -1) do
       delete activity_url(@activity)
     end

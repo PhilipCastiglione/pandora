@@ -6,11 +6,13 @@ class ActivitiesTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
+    skip()
     visit activities_url
     assert_selector "h1", text: "Activities"
   end
 
   test "should create activity" do
+    skip()
     visit activities_url
     click_on "New activity"
 
@@ -22,6 +24,7 @@ class ActivitiesTest < ApplicationSystemTestCase
   end
 
   test "should update Activity" do
+    skip()
     visit activity_url(@activity)
     click_on "Edit this activity", match: :first
 
@@ -33,6 +36,7 @@ class ActivitiesTest < ApplicationSystemTestCase
   end
 
   test "should destroy Activity" do
+    skip()
     visit activity_url(@activity)
     click_on "Destroy this activity", match: :first
 

@@ -10,7 +10,17 @@
 require "test_helper"
 
 class TagTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "label should be present and unique" do
+    tag = Tag.new
+    assert_not tag.valid?
+    assert_equal [ "can't be blank" ], tag.errors[:label]
+
+    tag.label = "ruby"
+    assert tag.valid?
+
+    tag.save!
+    tag = Tag.new(label: "ruby")
+    assert_not tag.valid?
+    assert_equal [ "has already been taken" ], tag.errors[:label]
+  end
 end

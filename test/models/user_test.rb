@@ -15,7 +15,9 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "email_address should be normalized" do
+    user = User.new(email_address: " LoL@examPLE.com  ", password: "password", password_confirmation: "password")
+    assert user.valid?
+    assert_equal "lol@example.com", user.email_address
+  end
 end

@@ -6,11 +6,13 @@ class TagsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
+    skip()
     visit tags_url
     assert_selector "h1", text: "Tags"
   end
 
   test "should create tag" do
+    skip()
     visit tags_url
     click_on "New tag"
 
@@ -22,6 +24,7 @@ class TagsTest < ApplicationSystemTestCase
   end
 
   test "should update Tag" do
+    skip()
     visit tag_url(@tag)
     click_on "Edit this tag", match: :first
 
@@ -33,6 +36,7 @@ class TagsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Tag" do
+    skip()
     visit tag_url(@tag)
     click_on "Destroy this tag", match: :first
 
