@@ -11,14 +11,14 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not draw when not authenticated" do
-    post draw_tags_url, params: { tag_ids: [ tags(:one).id ] }
+    post draw_activity_url, params: { tag_ids: [ tags(:one).id ] }
     assert_redirected_to new_session_url
   end
 
   test "should draw when authenticated" do
     sign_in(users(:one))
 
-    post draw_tags_url, params: { tag_ids: [ tags(:one).id ] }
+    post draw_activity_url, params: { tag_ids: [ tags(:one).id ] }
     assert_redirected_to drawn_activity_url(Activity.last)
   end
 
