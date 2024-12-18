@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  allow_unauthenticated_access only: %i[ home activities ]
+  allow_unauthenticated_access only: %i[ home ]
 
   before_action :set_tag, only: %i[ show edit update destroy ]
 
@@ -8,12 +8,18 @@ class TagsController < ApplicationController
     @tags = Tag.includes(:activities).where(activities: { drawn_on: nil })
   end
 
-  # GET /tags/1/activities
-  def activities
-    @tag = Tag.includes(:activities).where(activities: { drawn_on: nil }).find(params.expect(:id))
+  # POST /tags/draw
+  def draw
+    tags = Tag.includes(:activities).where(id: draw_params, activities: { drawn_on: nil })
 
-    if @tag.activities.empty?
-      redirect_to root_path, alert: "No available activities found for tag."
+    activities = tags.map { |tag| tag.activities }.reduce(:&)
+
+    activity = activities.sample
+
+    if activity&.draw!
+      redirect_to drawn_activity_path(activity)
+    else
+      redirect_to root_path, alert: "Activity could not be drawn."
     end
   end
 
@@ -82,5 +88,9 @@ class TagsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def tag_params
       params.expect(tag: [ :label ])
+    end
+
+    def draw_params
+      params.expect(tag_ids: [])
     end
 end

@@ -1,7 +1,9 @@
 <% content_for :title, "Pandora" %>
 <h1>Pandora</h1>
 <div id="tags">
-  <% @tags.select { |tag| tag.activities.any? }.each do |tag| %>
-    <p><%= link_to tag.label, tag_activities_path(tag) %></p>
+  <%= form_with(url: draw_activity_path) do |form| %>
+    <%= form.label :tag_ids, style: "display: block" %>
+    <%= form.collection_checkboxes :tag_ids, Tag.order(:label), :id, :label %>
+    <%= form.submit %>
   <% end %>
 </div>

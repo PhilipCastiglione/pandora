@@ -10,14 +10,16 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get activities when a tag has activities" do
-    get tag_activities_url(tags(:one))
-    assert_response :success
+  test "should not draw when not authenticated" do
+    post draw_tags_url, params: { tag_ids: [ tags(:one).id ] }
+    assert_redirected_to new_session_url
   end
 
-  test "should not get activities when a tag has no activities" do
-    get tag_activities_url(tags(:three))
-    assert_redirected_to root_url
+  test "should draw when authenticated" do
+    sign_in(users(:one))
+
+    post draw_tags_url, params: { tag_ids: [ tags(:one).id ] }
+    assert_redirected_to drawn_activity_url(Activity.last)
   end
 
   test "should not get index when not authenticated" do

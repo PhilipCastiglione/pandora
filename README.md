@@ -49,6 +49,5 @@ bin/kamal deploy
 
 ## TODO
 
-* change flow to randomly draw activity by selecting from a tag
 * make it all pretty
 * add content
