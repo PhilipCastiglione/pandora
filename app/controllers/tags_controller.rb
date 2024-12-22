@@ -14,7 +14,7 @@ class TagsController < ApplicationController
 
     activities = tags.map { |tag| tag.activities }.reduce(:&)
 
-    activity = activities.sample
+    activity = activities&.sample
 
     if activity&.draw!
       redirect_to drawn_activity_path(activity)
