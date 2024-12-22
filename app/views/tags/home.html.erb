@@ -1,9 +1,87 @@
+<style>
+  #tags {
+    text-align: center;
+  }
+
+  .tags-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .tags-label {
+    display: inline-block;
+    background-color: var(--botticelli);
+    color: var(--tiber);
+    border: 1px solid var(--white);
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+      background-color: var(--white);
+      color: var(--cornflower-blue);
+    }
+  }
+
+  .tags-checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    opacity: 0;
+
+    &:checked + .tags-label {
+      background-color: var(--white);
+      color: var(--cornflower-blue);
+    }
+  }
+
+  .gift-container {
+    position: relative;
+  }
+
+  .gift-shadow {
+    position: absolute;
+    box-shadow: 0px 140px 50px -60px black;
+    height: 76%;
+    width: 84%;
+    left: 8%;
+    z-index: -1;
+  }
+
+  .gift {
+    padding:30px;
+    margin-top: 60px;
+    border: none;
+    background-color: transparent;
+    font-size: 300px;
+    text-shadow: #FFCC00 0px 0 10px;
+
+    &:hover {
+      cursor: pointer;
+      text-shadow: #FFDD22 0px 0 20px;
+    }
+  }
+</style>
 <% content_for :title, "Pandora" %>
-<h1>Pandora</h1>
 <div id="tags">
   <%= form_with(url: draw_activity_path) do |form| %>
-    <%= form.label :tag_ids, style: "display: block" %>
-    <%= form.collection_checkboxes :tag_ids, Tag.order(:label), :id, :label %>
-    <%= form.submit %>
+    <div class="tags-container">
+      <%= form.collection_checkboxes :tag_ids, Tag.order(:label), :id, :label do |tag| %>
+        <div>
+          <%= tag.check_box class: "tags-checkbox" %>
+          <%= tag.label class: "tags-label" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="gift-container">
+      <div class="gift-shadow">&nbsp;</div>
+      <%= form.submit "🎁", class: "gift" %>
+    </div>
   <% end %>
 </div>
