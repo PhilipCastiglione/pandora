@@ -1,5 +1,75 @@
-<% content_for :title, "Pandora" %>
-<h1>Pandora</h1>
-<div id="<%= dom_id @activity %>">
-  <%= @activity.description %>
-</div>
+<style>
+  .button {
+    display: inline-block;
+    background-color: var(--botticelli);
+    color: var(--tiber);
+    border: 1px solid var(--white);
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    z-index: 2;
+
+    &:hover {
+      cursor: pointer;
+        text-decoration: none;
+        background-color: var(--white);
+        color: var(--cornflower-blue);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .button {
+        padding: 5px 10px;
+    }
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .wrapper {
+    position: fixed;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100vh;
+    top: 0;
+    width: 375px;
+    margin: 0 auto;
+    place-items: center;
+    z-index: 1;
+  }
+
+  .activity {
+    font-family: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
+    color: var(--tiber);
+    display: grid;
+    place-items: center;
+    text-align: left;
+    border: 1px solid var(--ming);
+    border-top-right-radius: 68px 2px;
+    border-top-left-radius: 2px 53px;
+    border-bottom-right-radius: 2px 73px;
+    border-bottom-left-radius: 78px 1.3px;
+    box-shadow: 15px 28px 25px -18px rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    padding: 20px;
+    background-color: lightyellow;
+  }
+
+  .gift-container {
+    margin-top: 67px;
+  }
+</style>
+<main>
+  <div class="center">
+    <div class="wrapper">
+      <div id="<%= dom_id @activity %>" class="activity" style="transform: rotate(<%= rand(12) - 6 %>deg);">
+        <%= @activity.description %>
+      </div>
+    </div>
+    <div class="gift-container">
+      <div class="gift-shadow">&nbsp;</div>
+      <button class="gift">🎁</button>
+    </div>
+  </div>
+</main>

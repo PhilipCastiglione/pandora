@@ -46,49 +46,30 @@
     vertical-align: text-bottom;
   }
 
-  .gift-container {
-    position: relative;
-  }
-
-  .gift-shadow {
-    position: absolute;
-    box-shadow: 0px 140px 50px -60px black;
-    height: 76%;
-    width: 84%;
-    left: 8%;
-    z-index: -1;
-  }
-
   .gift {
-    padding:30px;
-    margin-top: 60px;
-    border: none;
-    background-color: transparent;
-    font-size: 300px;
-    text-shadow: #FFCC00 0px 0 10px;
-
     &:hover {
       cursor: pointer;
       text-shadow: #FFDD22 0px 0 20px;
     }
   }
 </style>
-<% content_for :title, "Pandora" %>
-<div id="tags">
-  <%= form_with(url: draw_activity_path) do |form| %>
-    <div class="tags-container">
-      <%= form.collection_checkboxes :tag_ids, Tag.order(:label), :id, :label do |tag| %>
-        <div>
-          <%= tag.check_box class: "tags-checkbox" %>
-          <%= tag.label class: "tags-label" do |_| %>
-            <%= tag.object.label %>&nbsp;<span class="tags-activity-count"><%= "(#{tag.object.activities.size})" %></span>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <div class="gift-container">
-      <div class="gift-shadow">&nbsp;</div>
-      <%= form.submit "🎁", class: "gift" %>
-    </div>
-  <% end %>
-</div>
+<main>
+  <div id="tags">
+    <%= form_with(url: draw_activity_path) do |form| %>
+      <div class="tags-container">
+        <%= form.collection_checkboxes :tag_ids, @tags, :id, :label do |tag| %>
+          <div>
+            <%= tag.check_box class: "tags-checkbox" %>
+            <%= tag.label class: "tags-label" do |_| %>
+              <%= tag.object.label %>&nbsp;<span class="tags-activity-count"><%= "(#{tag.object.activities.size})" %></span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="gift-container">
+        <div class="gift-shadow"></div>
+        <%= form.submit "🎁", class: "gift" %>
+      </div>
+    <% end %>
+  </div>
+</main>

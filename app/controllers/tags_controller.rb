@@ -5,7 +5,10 @@ class TagsController < ApplicationController
 
   # GET /
   def home
-    @tags = Tag.includes(:activities).where(activities: { drawn_on: nil })
+    @tags = Tag.includes(:activities)
+               .where(activities: { drawn_on: nil })
+               .order(:label)
+               .select { |tag| tag.activities.any? }
   end
 
   # POST /tags/draw

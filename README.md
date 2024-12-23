@@ -49,5 +49,6 @@ bin/kamal deploy
 
 ## TODO
 
-* make it all pretty
 * add content
+    * fix trix editor styling
+    * make it slightly easier to add content

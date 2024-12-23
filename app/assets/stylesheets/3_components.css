@@ -1,0 +1,21 @@
+.gift-container {
+    position: relative;
+}
+
+.gift-shadow {
+    position: absolute;
+    box-shadow: 0px 140px 50px -60px black;
+    height: 73%;
+    width: 84%;
+    left: 8%;
+    z-index: -1;
+}
+
+.gift {
+    padding: 30px;
+    margin-top: 60px;
+    border: none;
+    background-color: transparent;
+    font-size: 300px;
+    text-shadow: #FFCC00 0px 0 10px;
+}

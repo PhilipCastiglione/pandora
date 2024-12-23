@@ -49,7 +49,7 @@ small {
 
 /* LAYOUT */
 
-body {
+main {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px 100px;
@@ -67,7 +67,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    body {
+    main {
         padding: 10px 20px;
     }
 }
