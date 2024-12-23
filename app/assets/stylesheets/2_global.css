@@ -56,6 +56,10 @@ main {
     min-height: 100vh;
 }
 
+section {
+    padding: 20px;
+}
+
 .flash {
     padding: 4px 16px;
     border-radius: 4px;

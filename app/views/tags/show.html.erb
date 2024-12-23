@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @tag %>
-
-<div>
-  <%= link_to "Edit this tag", edit_tag_path(@tag) %> |
+<style>
+  .button, .spacer {
+    margin-top: 20px;
+  }
+</style>
+<section>
+  <p style="color: green"><%= notice %></p>
   <%= link_to "Back to tags", tags_path %>
-
-  <%= button_to "Destroy this tag", @tag, method: :delete %>
-</div>
+  <div class="spacer">
+    <%= render @tag %>
+  </div>
+  <div>
+    <%= link_to "Edit this tag", edit_tag_path(@tag), class: "button" %>
+    <%= button_to "Destroy this tag", @tag, method: :delete, class: "button" %>
+  </div>
+</section>

@@ -1,14 +1,6 @@
 <div id="<%= dom_id activity %>">
-  <p>
-    <strong>Drawn on:</strong>
-    <%= activity.drawn_on %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= activity.description %>
-  </p>
-  <p>
-    <strong>Tags:</strong>
-    <%= activity.tags.map(&:label).join(", ") %>
-  </p>
+  <%= link_to activity do %>
+    <p>(<%= activity.drawn_on.present? ? activity.drawn_on : "Undrawn" %>)&nbsp;<%= activity.description.to_plain_text.truncate(80) %></p>
+    <p><%= activity.tags.present? ? activity.tags.map(&:label).join(" | ") : "[]" %></p>
+  <% end %>
 </div>

@@ -46,9 +46,3 @@ export KAMAL_REGISTRY_TOKEN=...
 
 bin/kamal deploy
 ```
-
-## TODO
-
-* add content
-    * fix trix editor styling
-    * make it slightly easier to add content

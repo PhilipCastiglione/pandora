@@ -1,16 +1,26 @@
-<p style="color: green"><%= notice %></p>
+<style>
+  .button {
+    margin-bottom: 20px;
+  }
 
+  .activity-row {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 20px;
+    align-items: end;
+  }
+</style>
 <% content_for :title, "Activities" %>
-
-<h1>Activities</h1>
-
-<div id="activities">
-  <% @activities.each do |activity| %>
-    <%= render activity %>
-    <p>
-      <%= link_to "Show this activity", activity %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New activity", new_activity_path %>
+<section>
+  <p style="color: green"><%= notice %></p>
+  <%= link_to "Tags", tags_path %>
+  <h1>Activities</h1>
+  <%= link_to "New activity", new_activity_path, class: "button" %>
+  <div id="activities">
+    <% @activities.each do |activity| %>
+      <div class="activity-row">
+        <%= render activity %>
+      </div>
+    <% end %>
+  </div>
+</section>

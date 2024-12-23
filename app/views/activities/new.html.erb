@@ -1,11 +1,6 @@
 <% content_for :title, "New activity" %>
-
-<h1>New activity</h1>
-
-<%= render "form", activity: @activity %>
-
-<br>
-
-<div>
+<section>
   <%= link_to "Back to activities", activities_path %>
-</div>
+  <h1>New activity</h1>
+  <%= render "form", activity: @activity %>
+</section>

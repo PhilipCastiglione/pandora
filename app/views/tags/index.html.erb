@@ -1,16 +1,26 @@
-<p style="color: green"><%= notice %></p>
+<style>
+  .button {
+    margin-bottom: 20px;
+  }
 
+  .tag-row {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 20px;
+    align-items: end;
+  }
+</style>
 <% content_for :title, "Tags" %>
-
-<h1>Tags</h1>
-
-<div id="tags">
-  <% @tags.each do |tag| %>
-    <%= render tag %>
-    <p>
-      <%= link_to "Show this tag", tag %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New tag", new_tag_path %>
+<section>
+  <p style="color: green"><%= notice %></p>
+  <%= link_to "Activities", activities_path %>
+  <h1>Tags</h1>
+  <%= link_to "New tag", new_tag_path, class: "button" %>
+  <div id="tags">
+    <% @tags.each do |tag| %>
+      <div class="tag-row">
+        <%= render tag %>
+      </div>
+    <% end %>
+  </div>
+</section>

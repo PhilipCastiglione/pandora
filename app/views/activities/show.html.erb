@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @activity %>
-
-<div>
-  <%= link_to "Edit this activity", edit_activity_path(@activity) %> |
+<style>
+  .button, .spacer {
+    margin-top: 20px;
+  }
+</style>
+<section>
+  <p style="color: green"><%= notice %></p>
   <%= link_to "Back to activities", activities_path %>
-
-  <%= button_to "Destroy this activity", @activity, method: :delete %>
-</div>
+  <div class="spacer">
+    <%= render @activity %>
+  </div>
+  <div>
+    <%= link_to "Edit this activity", edit_activity_path(@activity), class: "button" %>
+    <%= button_to "Destroy this activity", @activity, method: :delete, class: "button" %>
+  </div>
+</section>

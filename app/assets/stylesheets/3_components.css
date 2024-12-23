@@ -19,3 +19,27 @@
     font-size: 300px;
     text-shadow: #FFCC00 0px 0 10px;
 }
+
+.button {
+    display: inline-block;
+    background-color: var(--botticelli);
+    color: var(--tiber);
+    border: 1px solid var(--white);
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    z-index: 2;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+        background-color: var(--white);
+        color: var(--cornflower-blue);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .button {
+        padding: 5px 10px;
+    }
+}
