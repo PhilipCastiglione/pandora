@@ -1,8 +1,11 @@
 <div id="<%= dom_id activity %>">
   <%= link_to activity do %>
     <p>
-      <%= "💡" if activity.idea? %>
-      (<%= activity.drawn_on.present? ? activity.drawn_on : "Undrawn" %>)
+      <% if activity.idea? %>
+        <%= "(💡)" %>
+      <% else %>
+        (<%= activity.drawn_on.present? ? activity.drawn_on : "Undrawn" %>)
+      <% end %>
       <%= activity.description.to_plain_text.truncate(80) %>
     </p>
     <p><%= activity.tags.present? ? activity.tags.map(&:label).join(" | ") : "[]" %></p>
