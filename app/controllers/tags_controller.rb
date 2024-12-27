@@ -6,14 +6,14 @@ class TagsController < ApplicationController
   # GET /
   def home
     @tags = Tag.includes(:activities)
-               .where(activities: { drawn_on: nil })
+               .where(activities: { drawn_on: nil, idea: false })
                .order(:label)
                .select { |tag| tag.activities.any? }
   end
 
   # POST /tags/draw
   def draw
-    tags = Tag.includes(:activities).where(id: draw_params, activities: { drawn_on: nil })
+    tags = Tag.includes(:activities).where(id: draw_params, activities: { drawn_on: nil, idea: false })
 
     activities = tags.map { |tag| tag.activities }.reduce(:&)
 

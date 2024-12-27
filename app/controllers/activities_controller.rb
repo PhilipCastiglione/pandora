@@ -69,6 +69,6 @@ class ActivitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def activity_params
-      params.expect(activity: [ :drawn_on, :description, tag_ids: [] ])
+      params.expect(activity: [ :drawn_on, :description, :idea, tag_ids: [] ])
     end
 end

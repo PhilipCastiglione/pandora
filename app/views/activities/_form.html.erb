@@ -15,16 +15,20 @@
     </div>
   <% end %>
   <div>
-    <%= form.label :drawn_on, style: "display: block" %>
-    <%= form.date_field :drawn_on %>
-  </div>
-  <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.rich_textarea :description %>
   </div>
   <div>
     <%= form.label :tag_ids, style: "display: block" %>
     <%= form.collection_checkboxes :tag_ids, Tag.order(:label), :id, :label %>
+  </div>
+  <div>
+    <%= form.label :drawn_on %>
+    <%= form.date_field :drawn_on %>
+  </div>
+  <div>
+    <%= form.checkbox :idea %>
+    <%= form.label :idea %>
   </div>
   <div>
     <%= form.submit class: "button" %>

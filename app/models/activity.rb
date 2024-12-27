@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  drawn_on   :date
+#  idea       :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
