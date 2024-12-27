@@ -1,0 +1,36 @@
+<style>
+  .button {
+    margin-top: 20px;
+  }
+</style>
+<%= form_with(model: gift) do |form| %>
+  <% if gift.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(gift.errors.count, "error") %> prohibited this gift from being saved:</h2>
+      <ul>
+        <% gift.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :person %>
+    <%= form.text_field :person %>
+  </div>
+  <div>
+    <%= form.label :event %>
+    <%= form.text_field :event %>
+  </div>
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.rich_textarea :description %>
+  </div>
+  <div>
+    <%= form.checkbox :purchased %>
+    <%= form.label :purchased %>
+  </div>
+  <div>
+    <%= form.submit class: "button" %>
+  </div>
+<% end %>

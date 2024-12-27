@@ -1,0 +1,13 @@
+<div id="<%= dom_id gift %>">
+  <%= link_to gift do %>
+    <p>
+      <%= "(✅)" if gift.purchased? %>
+      <%= gift.description.to_plain_text.truncate(80) %>
+    </p>
+    <p>
+      <%= gift.person.present? ? gift.person : "[]" %>
+      |
+      <%= gift.event.present? ? gift.event : "[]" %>
+    </p>
+  <% end %>
+</div>

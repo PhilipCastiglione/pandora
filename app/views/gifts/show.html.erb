@@ -1,0 +1,16 @@
+<style>
+  .button, .spacer {
+    margin-top: 20px;
+  }
+</style>
+<section>
+  <p style="color: green"><%= notice %></p>
+  <%= link_to "Back to gifts", gifts_path %>
+  <div class="spacer">
+    <%= render @gift %>
+  </div>
+  <div>
+    <%= link_to "Edit this gift", edit_gift_path(@gift), class: "button" %>
+    <%= button_to "Destroy this gift", @gift, method: :delete, class: "button" %>
+  </div>
+</section>

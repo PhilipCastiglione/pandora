@@ -1,0 +1,22 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: gifts
+#
+#  id         :integer          not null, primary key
+#  event      :string
+#  person     :string
+#  purchased  :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+one:
+  person: MyString
+  event: MyString
+  purchased: false
+
+two:
+  person: MyString
+  event: MyString
+  purchased: false
