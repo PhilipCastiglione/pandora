@@ -28,6 +28,14 @@
 #                                          PUT    /tags/:id(.:format)                                                                               tags#update
 #                                          DELETE /tags/:id(.:format)                                                                               tags#destroy
 #                            draw_activity POST   /tags/draw(.:format)                                                                              tags#draw
+#                                    gifts GET    /gifts(.:format)                                                                                  gifts#index
+#                                          POST   /gifts(.:format)                                                                                  gifts#create
+#                                 new_gift GET    /gifts/new(.:format)                                                                              gifts#new
+#                                edit_gift GET    /gifts/:id/edit(.:format)                                                                         gifts#edit
+#                                     gift GET    /gifts/:id(.:format)                                                                              gifts#show
+#                                          PATCH  /gifts/:id(.:format)                                                                              gifts#update
+#                                          PUT    /gifts/:id(.:format)                                                                              gifts#update
+#                                          DELETE /gifts/:id(.:format)                                                                              gifts#destroy
 #                                     root GET    /                                                                                                 tags#home
 #         turbo_recede_historical_location GET    /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
 #         turbo_resume_historical_location GET    /resume_historical_location(.:format)                                                             turbo/native/navigation#resume

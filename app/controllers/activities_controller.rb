@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities or /activities.json
   def index
-    @activities = Activity.includes(:tags).order(created_at: :asc)
+    @activities = Activity.includes(:tags).order(created_at: :asc).all.with_rich_text_description_and_embeds
   end
 
   # GET /activities/1 or /activities/1.json

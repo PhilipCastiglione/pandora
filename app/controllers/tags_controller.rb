@@ -28,7 +28,7 @@ class TagsController < ApplicationController
 
   # GET /tags or /tags.json
   def index
-    @tags = Tag.includes(:activities).all
+    @tags = Tag.includes(:activities).all.with_rich_text_description_and_embeds
   end
 
   # GET /tags/1 or /tags/1.json

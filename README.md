@@ -12,7 +12,7 @@ Ruby on Rails, sqlite, Docker, Kamal
 
 ### Requirements
 
-**Ruby Version:** 3.2.2
+**Ruby Version:** 3.2.5
 
 **System dependencies:**
 
