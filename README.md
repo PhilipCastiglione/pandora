@@ -2,8 +2,6 @@
 
 A web app for helping choose what activities to do.
 
-Live at: https://pandora.philipcastiglione.com/
-
 ## Technologies
 
 Ruby on Rails, sqlite, Docker, Kamal
